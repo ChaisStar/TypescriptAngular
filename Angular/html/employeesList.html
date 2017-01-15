@@ -1,0 +1,16 @@
+﻿<div class="container">
+    <button type="button" class="btn btn-primary" ng-click="vm.getEmployees()">GetData</button>
+    <div ui-grid="vm.gridOptions" class="myGrid grid" ui-grid-selection></div>
+    <input type="checkbox" ng-model="isModal" />
+    <p>Use modal windows</p>
+    <fieldset ng-if="!isModal">
+        <a class="btn btn-primary col-md-1" ng-href="#!/employee">Add</a>
+        <a class="btn btn-primary col-md-1" ng-href="#!/employee/{{vm.selectedEmployee.Id}}" ng-disabled="!vm.selectedEmployee">Edit</a>
+        <a class="btn btn-danger col-md-1" ng-href="#!/deleteEmployee/{{vm.selectedEmployee.Id}}" ng-disabled="!vm.selectedEmployee">Delete</a>
+    </fieldset>
+    <fieldset ng-if="isModal">
+        <button class="btn btn-primary col-md-1" ng-click="vm.addEmployee()">Add</button>
+        <button class="btn btn-primary col-md-1" ng-click="vm.editEmployee()" ng-disabled="!vm.selectedEmployee">Edit</button>
+        <button class="btn btn-danger col-md-1" ng-click="vm.deleteEmployee()" ng-disabled="!vm.selectedEmployee">Delete</button>
+    </fieldset>
+</div>
